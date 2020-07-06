@@ -45,26 +45,47 @@ $router->post('/test', function () {
 
 $router->group(['prefix'=>'user'], function () use ($router) {
     $router->get('register',function(){
-        return 'User Register';
+        return response()->json([
+            'status'=>'success',
+            'message'=>'User Register'
+        ]);
     });
     $router->get('login',function(){
-        return 'User Login';
+        return response()->json([
+            'status'=>'success',
+            'message'=> 'User Login'
+        ]);
     });
     $router->get('info',function(){
-        return 'User Info';
+        return response()->json([
+            'status'=>'success',
+            'message'=> 'User Info'
+        ]);
     });
 
 });
 
 $router->group(['prefix'=>'admin'], function () use ($router) {
     $router->get('register',function(){
-        return 'Admin Register';
+        return response()->json([
+            'data'=>[
+            'status'=>'success',
+            'message'=> 'Admin Registered Success',
+            'token'=>base64_encode( str::random(100))
+            ]
+        ],200);
     });
     $router->get('login',function(){
-        return 'Admin Login';
+        return response()->json([
+            'status'=>'success',
+            'message'=> 'Admin Login'
+        ]);
     });
     $router->get('info',function(){
-        return 'Admin Info';
+        return response()->json([
+            'status'=>'success',
+            'message'=> 'Admin Info'
+        ]);
     });
 
 });
